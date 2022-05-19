@@ -7,6 +7,7 @@ public class InputOutputStreams {
     public static void main(String[] args) {
         createFile();
         getFileInformation();
+        writeingToFile();
     }
     public static void createFile(){
         File file=new File("C:\\Users\\Hp\\IdeaProjects\\InputOutputStream\\src\\test.txt");
@@ -33,5 +34,19 @@ public class InputOutputStreams {
             System.out.println("path " + file.length());
         }
     }
+
+    public static void  writingToFile(){
+        File file=new File("C:\\Users\\Hp\\IdeaProjects\\InputOutputStream\\src\\test.txt");
+        String contentOfFile="A WRITE statement cannot be used to update a " +
+                "consecutive data set accessed as a SEQUENTIAL UPDATE file. " +
+                "In order to update a consecutive data set by a SEQUENTIAL " +
+                "UPDATE file, you must retrieve a record with a READ statement " +
+                "before you can update it by a REWRITE statement.";
+        fileWriter.write(contentOfFile);
+        fileWriter.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 }
+
 
