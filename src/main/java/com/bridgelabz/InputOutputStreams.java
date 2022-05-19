@@ -2,6 +2,7 @@ package com.bridgelabz;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -9,7 +10,9 @@ public class InputOutputStreams {
     public static void main(String[] args) {
         createFile();
         getFileInformation();
-        writeingToFile();
+        writingToFile();
+        readFile();
+
     }
 
     public static void createFile() {
@@ -39,24 +42,24 @@ public class InputOutputStreams {
         }
     }
 
-    public static void writingToFile() {
+    public static void writingToFile(){
         File file = new File("C:\\Users\\Hp\\IdeaProjects\\InputOutputStream\\src\\test.txt");
-        String contentOfFile = "A WRITE statement cannot be used to update a " +
-                "consecutive data set accessed as a SEQUENTIAL UPDATE file. " +
-                "In order to update a consecutive data set by a SEQUENTIAL " +
-                "UPDATE file, you must retrieve a record with a READ statement " +
-                "before you can update it by a REWRITE statement.";
-        fileWriter.write(contentOfFile);
-        fileWriter.close();
-    } catch(
-    IOException e)
-
-    {
-        e.printStackTrace();
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            String contentOfFile="A WRITE statement cannot be used to update a " +
+                    "consecutive data set accessed as a SEQUENTIAL UPDATE file. " +
+                    "In order to update a consecutive data set by a SEQUENTIAL " +
+                    "UPDATE file, you must retrieve a record with a READ statement " +
+                    "before you can update it by a REWRITE statement.";
+            fileWriter.write(contentOfFile);
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void readFile() {
-        File file = new File("C:\\Users\\sksha\\IdeaProjects\\FileHandling\\src\\test.txt");
+        File file = new File("C:\\Users\\Hp\\IdeaProjects\\InputOutputStream\\src\\test.txt");
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
